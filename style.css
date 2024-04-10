@@ -2,39 +2,68 @@ html,
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url("https://i0.wp.com/unusualplaces.org/wp-content/uploads/2020/04/10234287063_418b61ffdb_k.jpg?ssl=1");
 }
 
 .main-header {
-    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    gap: 10px;
     padding-bottom: 10px;
+    padding-top: 5px;
 }
 
 .title {
     text-align: center;
     margin: 0;
-    font-size: 8em;
-    font-family: "Helvetica";
+    font-size: 3em;
+    font-family: 'Baloo 2', cursive;
     font-weight: normal;
-    color: white;
+    color: black;
+    margin-left: 20px;
+    height: 100%;
+    background-color: grey;
+    border: 1px solid white;
+    border-radius: 15px;;
 }
 
 #card-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    justify-items: center;
+    align-items: center;
+    margin: 20px auto;
+    width: auto;
 }
 
 .card {
     width: 300px;
-    border: 1px solid #ccc;
+    display: block;
+    border: 5px solid black;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
     margin: 5px;
+}
+
+.card[style*="display: none"] {
+    display: none;
 }
 
 .card-content {
     padding: 20px;
-    font-family: "Verdana";
+    font-family: 'Baloo 2', cursive;
     color: #777;
 }
 
@@ -45,14 +74,18 @@ body {
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 375px;
+    object-fit: cover;
+    border: 3px solid black;
 }
 
 .footer {
     display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, .3);
+    justify-content: left;
+    background-color: black;
+    border-top: 3px solid white;
     padding: 10px;
+    margin-top: auto;
 }
 
 button {
@@ -67,4 +100,46 @@ button {
     font-size: 22px;
     cursor: pointer;
     margin: 5px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.search-container form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    height: 50%;
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: grey;
+    border: 1px solid white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.search-container button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.filter-container {
+    margin-right: 20px;
+    color: white;
 }

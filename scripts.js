@@ -1,41 +1,63 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- * 
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your 
- *    browser and make sure you can see that change. 
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- * 
- */
 
-
-const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-// This is an array of strings (TV show titles)
+// This is an array
 let titles = [
-    "Fresh Prince of Bel Air",
-    "Curb Your Enthusiasm",
-    "East Los High"
+    {
+        title: "The Fresh Prince of Bel-Air",
+        year: 1990,
+        genre: "Comedy",
+        URL : "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg",
+    },
+    {
+        title: "Curb Your Enthusiasm",
+        year: 2000,
+        genre: "Comedy",
+        URL : "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        title: "East Los High",
+        year: 2013,
+        genre: "Drama",
+        URL : "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg"
+    },
+    {
+        title: "Ballad of Songbirds ",
+        year: 2023,
+        genre: "Thriller",
+        URL : "https://upload.wikimedia.org/wikipedia/en/9/96/The_Hunger_Games_-_The_Ballad_of_Songbirds_%26_Snakes_official_poster.jpg"
+    },
+    {
+        title: "Wonka",
+        year: 2023,
+        genre: "Comedy",
+        URL : "https://th.bing.com/th/id/R.841581b70c6a57f915846763edb9a7bb?rik=azJh3LCcZEr%2boA&riu=http%3a%2f%2fwww.impawards.com%2f2023%2fposters%2fwonka_ver2.jpg&ehk=A9hV4F5dUYjjleeF6x%2boVpMXGYycYghSizr0ubH31%2bs%3d&risl=&pid=ImgRaw&r=0"
+    },
+    {
+        title: "The BeeKeeper",
+        year: 2023,
+        genre: "Thriller",
+        URL : "https://th.bing.com/th/id/OIP.bT2bpfNzDfQP-o9cQm5zngHaKk?w=119&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+    },
+    {
+        title: "Godzilla -One",
+        year: 2023,
+        genre: "Thriller",
+        URL : "https://th.bing.com/th/id/OIP.aApqdx77JMtJ2UbeeCdPdgAAAA?rs=1&pid=ImgDetMain",
+    },
+    {
+        title: "Migration",
+        year: 2023,
+        genre: "Comedy",
+        URL : "https://images.streamm4u.net/asset/2023/nov/migration-2023.jpg"
+    },
+    {
+        title: "Five Nights at Freddy's",
+        year: 2023,
+        genre: "Horror",
+        URL : "https://m.media-amazon.com/images/M/MV5BMzk5MTM5MWYtMjk5MS00NzUxLWIzMDYtMWU5YzljMDQ5NmFiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg"
+    },
+
 ];
-// Your final submission should have much more data than this, and 
-// you should use more than just an array of strings to store it all.
+
 
 
 // This function adds cards the page to display the data in the array
@@ -45,30 +67,29 @@ function showCards() {
     const templateCard = document.querySelector(".card");
     
     for (let i = 0; i < titles.length; i++) {
-        let title = titles[i];
+        let title = titles[i].title;
 
-        // This part of the code doesn't scale very well! After you add your
-        // own data, you'll need to do something totally different here.
+        // made more scalable
         let imageURL = "";
-        if (i == 0) {
-            imageURL = FRESH_PRINCE_URL;
-        } else if (i == 1) {
-            imageURL = CURB_POSTER_URL;
-        } else if (i == 2) {
-            imageURL = EAST_LOS_HIGH_POSTER_URL;
-        }
+        imageURL = titles[i].URL;
+        genre = titles[i].genre;
+        year = titles[i].year;
 
         const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, title, imageURL); // Edit title and image
+        editCardContent(nextCard, title, imageURL, genre, year); // Edit title and image
         cardContainer.appendChild(nextCard); // Add new card to the container
     }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, newTitle, newImageURL, newGenre, newYear) {
     card.style.display = "block";
 
     const cardHeader = card.querySelector("h2");
+    const cardGenre = card.querySelector("#genre");
+    const cardYear = card.querySelector("#year");
     cardHeader.textContent = newTitle;
+    cardGenre.textContent = newGenre;
+    cardYear.textContent = newYear;
 
     const cardImage = card.querySelector("img");
     cardImage.src = newImageURL;
@@ -91,4 +112,36 @@ function quoteAlert() {
 function removeLastCard() {
     titles.pop(); // Remove last item in titles array
     showCards(); // Call showCards again to refresh
+}
+
+function searchTitles() {
+    const input = document.getElementById('search-input');
+    const filter = input.value.toLowerCase();
+    const cardContainer = document.getElementById("card-container");
+
+    // Loop through all cards and hide those that don't match the search term
+    const cards = cardContainer.getElementsByClassName("card");
+    for (let i = 0; i < cards.length; i++) {
+        const title = cards[i].querySelector("h2").textContent.toLowerCase();
+        if (title.includes(filter)) {
+            cards[i].style.display = "block"; // Show matching cards
+        } else {
+            cards[i].style.display = "none"; // Hide non-matching cards
+        }
+    }
+}
+
+function filterByGenre() {
+    const selectedGenre = document.getElementById('genre-filter').value;
+    const cards = document.getElementsByClassName('card');
+
+    for (let i = 0; i < cards.length; i++) {
+        const genre = cards[i].querySelector('#genre').textContent.toLowerCase();
+
+        if (selectedGenre === 'all' || genre === selectedGenre) {
+            cards[i].style.display = 'block';
+        } else {
+            cards[i].style.display = 'none';
+        }
+    }
 }

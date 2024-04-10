@@ -2,30 +2,48 @@
 <html>
 
 <head>
-    <title>LA TV Shows | Home</title>
+    <title>PandaStream | Home</title>
     <meta name="description" content="A Catalog of Shows Set in Los Angeles">
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="scripts.js"></script>
 </head>
 
 <body>
     <header class="main-header">
-        <h1 class="title">LA TV Shows</h1>
+        <h1 class="title">PandaStream</h1>
+        <div class="filter-container">
+            <label for="genre-filter">Filter by Genre:</label>
+            <select id="genre-filter" onchange="filterByGenre()">
+                <option value="all">All Genres</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="thriller">Thriller</option>
+                <option value="thriller">Horror</option>
+            </select>
+        </div>
+        <div class="search-container">
+            <form action="/search" method="get">
+                <input type="text" id="search-input" placeholder="Search titles..." onkeyup="searchTitles()">
+                <div id="search-results"></div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </header>
     <div id="card-container">
-        
+
     </div>
     <div class="card" style="display: none;">
         <div class="card-content">
             <h2>TV Show Title</h2>
             <img src="" alt="TV Show Poster">
             <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
+                <li id="genre">Bullet Point 1</li>
+                <li id="year">Bullet Point 2</li>
             </ul>
         </div>
     </div>
+
     <div class="footer">
         <button onclick="quoteAlert();">
             Get A Quote!
